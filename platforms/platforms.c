@@ -10,6 +10,7 @@ static char*platform_names[PLATFORM_NUM] = {
     "amiga",
     "mac68k",
     "x68000",
+    "a100",
 };
 
 int get_platform_index(char *name) {
@@ -26,6 +27,7 @@ int get_platform_index(char *name) {
 void create_platform_amiga(struct platform_config *cfg, char *subsys);
 void create_platform_mac68k(struct platform_config *cfg, char *subsys);
 void create_platform_dummy(struct platform_config *cfg, char *subsys);
+void create_platform_a100(struct platform_config *cfg, char *subsys);
 
 struct platform_config *make_platform_config(char *name, char *subsys) {
     struct platform_config *cfg = NULL;
@@ -53,6 +55,9 @@ struct platform_config *make_platform_config(char *name, char *subsys) {
             break;
         case PLATFORM_MAC:
             create_platform_mac68k(cfg, subsys);
+            break;
+        case PLATFORM_A100:
+            create_platform_a100(cfg, subsys);
             break;
         case PLATFORM_NONE:
         case PLATFORM_X68000:
